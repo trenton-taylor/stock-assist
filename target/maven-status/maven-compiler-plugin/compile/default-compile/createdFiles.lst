@@ -1,0 +1,10 @@
+com/taylor/stocks/StockApplication.class
+com/taylor/stocks/routes/ErrorHandler.class
+com/taylor/stocks/service/StockService.class
+com/taylor/stocks/error/ErrorResponse.class
+com/taylor/stocks/domain/StockResult.class
+com/taylor/stocks/dao/StockDAO.class
+com/taylor/stocks/error/StockException.class
+com/taylor/stocks/client/YahooStockClient.class
+com/taylor/stocks/routes/Stocks.class
+com/taylor/stocks/routes/Heartbeat.class

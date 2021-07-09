@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * This would normally be used to get/read/write stock values. Mocking for sake of brevity
+ * This would normally be used to get/read/write stock values from a database. Mocking for sake of brevity
  */
 @Component
 public class StockDAO {
@@ -28,8 +28,10 @@ public class StockDAO {
     }
 
     public void addStock(String stock){
-        if(stocks.contains(stock) && !YahooStockClient.isValidStock(stock)){
+        if(stocks.contains(stock)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Stock already being watched!");
+        } else if (!YahooStockClient.isValidStock(stock)){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid stock!");
         } else {
             stocks.add(stock);
         }

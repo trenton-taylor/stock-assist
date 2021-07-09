@@ -5,14 +5,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
-import yahoofinance.quotes.stock.StockQuote;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 
 @Slf4j
 public class YahooStockClient {
-
 
     public static boolean isValidStock(String ticker){
         try{

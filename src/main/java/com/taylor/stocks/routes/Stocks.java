@@ -1,6 +1,7 @@
 package com.taylor.stocks.routes;
 
 import com.taylor.stocks.client.YahooStockClient;
+import com.taylor.stocks.domain.StockResponse;
 import com.taylor.stocks.domain.StockResult;
 import com.taylor.stocks.error.StockException;
 import com.taylor.stocks.service.StockService;
@@ -26,17 +27,22 @@ public class Stocks {
     @Autowired
     StockService stockService;
 
-    @GetMapping("all/current")
+    @GetMapping("list/current")
     public Map<String, Stock> getAllStockData() throws Exception {
+
+        if(stockService.getStocks() == null || stockService.getStocks().size() == 0){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No stocks currently being watched!");
+        }
+
         try {
             Map<String,Stock> x = YahooFinance.get(stockService.getStocks().toArray(String[]::new));
             return x;
         } catch (Exception e){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No stocks found");
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error retrieving stocks!");
         }
     }
 
-//    @GetMapping("all/average")
+//    @GetMapping("list/average")
 //    public StockResult getAllAverageStockData(@RequestParam("interval") String interval)) throws Exception {
 //        try {
 //            return new StockResult(ticker, YahooStockClient.getPriceByTicker(ticker));
@@ -74,21 +80,21 @@ public class Stocks {
 
     }
 
-    @GetMapping("all")
-    public Set<String> getAllStocks() throws Exception {
+    @GetMapping("watches")
+    public Set<String> getWatches() throws Exception {
         return stockService.getStocks();
     }
 
-    @PutMapping("{stock}")
-    public String addStock(@PathVariable String stock){
+    @PutMapping("watches/{stock}")
+    public StockResponse addStockToWatches(@PathVariable String stock){
         stockService.addStock(stock);
-        return "Adding stock " + stock;
+        return new StockResponse(200, "Successfully added " + stock + " to your watch list.");
     }
 
-    @DeleteMapping("{stock}")
-    public String deleteStock(@PathVariable String stock){
+    @DeleteMapping("watches/{stock}")
+    public StockResponse deleteStockFromWatches(@PathVariable String stock){
         stockService.deleteStock(stock);
-        return "Removing stock " + stock;
+        return new StockResponse(200, "Successfully deleted " + stock + " from your watch list.");
     }
 
 }

@@ -70,7 +70,7 @@ public class StocksService {
      */
     public void addStockToWatches(String symbol){
         if(stockDao.getWatchedStockSymbols().contains(symbol)){
-            throw new StockException("Stock symbol " + symbol + " already found in you watch list.");
+            throw new StockException("You cannot add " + symbol + " because you are already watching it.");
         }
         stockDao.addWatchedStock(yahooStockClient.getStockData(symbol));
     }

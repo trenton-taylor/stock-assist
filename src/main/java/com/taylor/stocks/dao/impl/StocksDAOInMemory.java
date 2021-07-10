@@ -67,7 +67,7 @@ public class StocksDAOInMemory implements StocksDAO<Stock> {
      */
     public void addWatchedStock(Stock stock) throws StockException {
         if(watchedStocks.containsKey(stock.getSymbol())) {
-            throw new StockException("Stock " + stock.getSymbol() + " is already being watched.");
+            throw new StockException("You cannot add + " + stock.getSymbol() + " because you are already watching it.");
         } else {
             watchedStocks.put(stock.getSymbol(), stock);
         }
@@ -82,7 +82,7 @@ public class StocksDAOInMemory implements StocksDAO<Stock> {
         if(watchedStocks.containsKey(stockSymbol)){
             watchedStocks.remove(stockSymbol);
         } else {
-            throw new StockException("You are not currently watching " + stockSymbol);
+            throw new StockException("You cannot delete " + stockSymbol + " because you are not watching it");
         }
     }
 

@@ -35,7 +35,7 @@ curl --location --request GET 'localhost:8080/stocks/multi'
 ```
 curl --location --request GET 'localhost:8080/stocks/single/AAPL'
 ```
-###Sample @PUTs
+### Sample @PUTs
 *With request body:*
 ```
 curl --location --request PUT 'localhost:8080/stocks/multi' \
@@ -49,7 +49,7 @@ curl --location --request PUT 'localhost:8080/stocks/multi' \
 
 *With path param:*
 ```
-curl --location --request DELETE 'localhost:8080/stocks/single/AAPL'
+curl --location --request PUT 'localhost:8080/stocks/single/AAPL'
 ```
 
 ### Sample @Deletes
@@ -66,7 +66,7 @@ curl --location --request DELETE 'localhost:8080/stocks/multi' \
 
 *With path param:*
 ```
-curl --location --request PUT 'localhost:8080/stocks/single/AAPL'
+curl --location --request DELETE 'localhost:8080/stocks/single/AAPL'
 ```
 
 

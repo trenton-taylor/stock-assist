@@ -25,7 +25,7 @@ public class StocksRoute {
      * Returns all the stock data for stocks in the current watch list
      * @return
      */
-    @GetMapping("watches/multi")
+    @GetMapping("multi")
     public List<Stock> getWatchedStocksData() {
         log.info("Requesting all stocks in your watch list");
         return stocksService.getWatchedStocksData();
@@ -36,7 +36,7 @@ public class StocksRoute {
      * @param symbols
      * @return
      */
-    @PutMapping("watches/multi")
+    @PutMapping("multi")
     public ServiceResponse addStocksToWatches(@RequestBody List<String> symbols) {
         log.info("Adding " + symbols.toString() + " to your watch list");
         stocksService.addStocksToWatches(symbols);
@@ -48,7 +48,7 @@ public class StocksRoute {
      * @param symbols
      * @return
      */
-    @DeleteMapping("watches/multi")
+    @DeleteMapping("multi")
     public ServiceResponse deleteStocksFromWatches(@RequestBody List<String> symbols) {
         log.info("Deleting watches (multi)");
         stocksService.deleteStocksFromWatches(symbols);
@@ -60,7 +60,7 @@ public class StocksRoute {
      * @param symbol
      * @return
      */
-    @GetMapping("watches/single/{symbol}")
+    @GetMapping("single/{symbol}")
     public Stock getSingleCurrentStockData(@PathVariable String symbol) {
         log.info("Requesting " + symbol + " from the watch list");
         return stocksService.getWatchedStockData(symbol);
@@ -71,7 +71,7 @@ public class StocksRoute {
      * @param symbol
      * @return
      */
-    @PutMapping("watches/single/{symbol}")
+    @PutMapping("single/{symbol}")
     public ServiceResponse addStockToWatches(@PathVariable String symbol){
         log.info("Adding " + symbol + " to the watch list");
         stocksService.addStockToWatches(symbol);
@@ -83,7 +83,7 @@ public class StocksRoute {
      * @param symbol
      * @return
      */
-    @DeleteMapping("watches/single/{symbol}")
+    @DeleteMapping("single/{symbol}")
     public ServiceResponse deleteStockFromWatches(@PathVariable String symbol){
         log.info("Deleting " + symbol + " from the watch list");
         stocksService.deleteStockFromWatches(symbol);

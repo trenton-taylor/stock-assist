@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.taylor.stocks</groupId>
-    <artifactId>super-stonks</artifactId>
+    <artifactId>stock-assist</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <properties>

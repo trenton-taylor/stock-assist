@@ -51,7 +51,7 @@ curl --location --request PUT 'localhost:8080/stocks/multi' \
 
 *With path param:*
 ```
-curl --location --request DELETE 'localhost:8080/stocks/single/AAPL'
+curl --location --request PUT 'localhost:8080/stocks/single/AAPL'
 ```
 
 ### Sample @Deletes
@@ -68,7 +68,7 @@ curl --location --request DELETE 'localhost:8080/stocks/multi' \
 
 *With path param:*
 ```
-curl --location --request PUT 'localhost:8080/stocks/single/AAPL'
+curl --location --request DELETE 'localhost:8080/stocks/single/AAPL'
 ```
 
 
@@ -99,8 +99,3 @@ Project Link: [https://github.com/trenton-taylor/stock-assist](https://github.co
 ![image](https://user-images.githubusercontent.com/9722718/125177751-6fb9bc80-e1ac-11eb-8de9-0ce887f03c69.png)
 #### Cannot add:
 ![image](https://user-images.githubusercontent.com/9722718/125177815-e9ea4100-e1ac-11eb-8053-69e25eba32c1.png)
-
-
-
-
-

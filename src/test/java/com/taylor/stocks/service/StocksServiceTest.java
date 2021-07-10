@@ -3,6 +3,7 @@ package com.taylor.stocks.service;
 import com.taylor.stocks.client.YahooStockClient;
 import com.taylor.stocks.dao.impl.StocksDAOInMemory;
 import com.taylor.stocks.domain.Stock;
+import com.taylor.stocks.exception.StockException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,13 +32,13 @@ public class StocksServiceTest {
     @Test
     public void testNullStockList(){
         Mockito.when(stockDao.getWatchedStockSymbols()).thenReturn(null);
-        Assertions.assertThrows(ResponseStatusException.class, () -> stocksService.getWatchedStocksList());
+        Assertions.assertThrows(StockException.class, () -> stocksService.getWatchedStocksList());
     }
 
     @Test
     public void testEmptyStockList(){
         Mockito.when(stockDao.getWatchedStockSymbols()).thenReturn(new HashSet<>());
-        Assertions.assertThrows(ResponseStatusException.class, () -> stocksService.getWatchedStocksList());
+        Assertions.assertThrows(StockException.class, () -> stocksService.getWatchedStocksList());
     }
 
     @Test

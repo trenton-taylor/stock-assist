@@ -32,7 +32,7 @@ public class StocksService {
      */
     public Set<String> getWatchedStocksList(){
         if(stockDao.getWatchedStockSymbols() == null || stockDao.getWatchedStockSymbols().size() == 0){
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There are no stocks currently being watched.");
+            throw new StockException("You are not currently watching any stocks.");
         }
         return stockDao.getWatchedStockSymbols();
     }

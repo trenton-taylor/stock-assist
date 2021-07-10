@@ -82,7 +82,7 @@ public class StocksDAOInMemory implements StocksDAO<Stock> {
         if(watchedStocks.containsKey(stockSymbol)){
             watchedStocks.remove(stockSymbol);
         } else {
-            throw new StockException("Could not find symbol " + stockSymbol + " to delete.");
+            throw new StockException("You are not currently watching " + stockSymbol);
         }
     }
 

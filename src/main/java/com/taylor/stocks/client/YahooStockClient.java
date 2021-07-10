@@ -1,41 +1,69 @@
 package com.taylor.stocks.client;
 
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
-import yahoofinance.Stock;
+import com.taylor.stocks.domain.Stock;
+import com.taylor.stocks.exception.StockException;
+import org.springframework.stereotype.Service;
 import yahoofinance.YahooFinance;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Map;
+import java.util.Set;
 
-@Slf4j
+/**
+ * Client class for getting data from Yahoo and formatting as needed.
+ */
+@Service
 public class YahooStockClient {
 
-    public static boolean isValidStock(String ticker){
+    /**
+     * Wrapper for getting raw Stock data from Yahoo
+     * @param symbol
+     * @return
+     * @throws StockException
+     */
+    public yahoofinance.Stock getYahooStock(String symbol) throws StockException{
         try{
-            YahooFinance.get(ticker).getQuote();
-            return true;
-        } catch(Exception e){
-            return false;
+            yahoofinance.Stock result = YahooFinance.get(symbol);
+            if(result == null){
+                throw new StockException("Stock not found in Yahoo! API.");
+            }
+            return result;
+        } catch(IOException e){
+            throw new StockException("Exception retrieving stock from Yahoo! API");
         }
     }
 
-    public static Stock getStock(String ticker){
+    /**
+     * Gets a list of Yahoo stocks
+     * @param symbols
+     * @return
+     */
+    public Map<String, yahoofinance.Stock> getYahooStocks(Set<String> symbols){
         try{
-            return YahooFinance.get(ticker);
+            return YahooFinance.get(symbols.toArray(String[]::new));
         } catch(IOException ioe){
-            log.error("Exception retrieving stock from Yahoo!");
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Exception retrieving stock from Yahoo!");
+            throw new StockException("Exception retrieving stocks from Yahoo! API");
         }
     }
 
-
-    public static BigDecimal getPriceByTicker(String ticker){
-        return getStock(ticker).getQuote().getPrice();
+    /**
+     * Gets the raw stock data from Yahoo and converts it to our StockData format
+     * @param symbol
+     * @return StockData in internal format
+     */
+    public Stock getStockData(String symbol) {
+        yahoofinance.Stock stock = getYahooStock(symbol);
+        BigDecimal price = stock.getQuote().getPrice();
+        return new Stock(symbol, price, price, BigDecimal.ZERO, 0L);
     }
 
-    public static BigDecimal getPriceByStock(Stock stock){
-            return stock.getQuote().getPrice();
+    /**
+     * Gets just the raw price data from Yahoo
+     * @param symbol to get data for
+     * @return BigDecimal of price
+     */
+    public BigDecimal getCurrentPriceBySymbol(String symbol){
+        return getYahooStock(symbol).getQuote().getPrice();
     }
 
 }

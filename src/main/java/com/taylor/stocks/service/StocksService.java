@@ -32,7 +32,7 @@ public class StocksService {
      */
     public Set<String> getWatchedStocksList(){
         if(stockDao.getWatchedStockSymbols() == null || stockDao.getWatchedStockSymbols().size() == 0){
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "There are no stocks currently being watched.");
+            throw new StockException("You are not currently watching any stocks.");
         }
         return stockDao.getWatchedStockSymbols();
     }
@@ -70,7 +70,7 @@ public class StocksService {
      */
     public void addStockToWatches(String symbol){
         if(stockDao.getWatchedStockSymbols().contains(symbol)){
-            throw new StockException("Stock symbol " + symbol + " already found in you watch list.");
+            throw new StockException("You cannot add " + symbol + " because you are already watching it.");
         }
         stockDao.addWatchedStock(yahooStockClient.getStockData(symbol));
     }

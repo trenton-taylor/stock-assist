@@ -35,7 +35,7 @@ curl --location --request GET 'localhost:8080/stocks/multi'
 ```
 curl --location --request GET 'localhost:8080/stocks/single/AAPL'
 ```
-###Sample @PUTs
+### Sample @PUTs
 *With request body:*
 ```
 curl --location --request PUT 'localhost:8080/stocks/multi' \

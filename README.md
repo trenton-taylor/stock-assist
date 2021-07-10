@@ -79,17 +79,17 @@ Trenton Taylor - trenton.a.taylor@gmail.com
 Project Link: [https://github.com/trenton-taylor/stock-assist](https://github.com/trenton-taylor/stock-assist)
 
 ## Screenshots
-####Single @Put:
+#### Single @Put:
 ![single put](https://user-images.githubusercontent.com/9722718/125177438-a9d58f00-e1a9-11eb-94ef-3dad8501f75b.png)
-####Multi @Put:
+#### Multi @Put:
 ![multi put](https://user-images.githubusercontent.com/9722718/125177412-84e11c00-e1a9-11eb-923c-c9733b7e445a.png)
-####Single @Get:
+#### Single @Get:
 ![single get](https://user-images.githubusercontent.com/9722718/125177452-ceca0200-e1a9-11eb-98d9-62c93d34a72d.png)
-####Multi @Get:
+#### Multi @Get:
 ![multi get](https://user-images.githubusercontent.com/9722718/125177446-bfe34f80-e1a9-11eb-8a32-26541ffb8972.png)
-####Single @Delete:
+#### Single @Delete:
 ![single delete](https://user-images.githubusercontent.com/9722718/125177469-f325de80-e1a9-11eb-9339-427fadeb5fb1.png)
-####Multi @Delete:
+#### Multi @Delete:
 ![multi delete](https://user-images.githubusercontent.com/9722718/125177476-06d14500-e1aa-11eb-94ad-90d31b3b7c18.png)
 #### Not found in Yahoo! API
 ![Not found in Yahoo! API](https://user-images.githubusercontent.com/9722718/125177398-6844e400-e1a9-11eb-8aba-f1d23fe36f6f.png)

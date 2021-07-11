@@ -3,6 +3,7 @@ package com.taylor.stocks.dao.impl;
 import com.taylor.stocks.dao.StocksDAO;
 import com.taylor.stocks.domain.Stock;
 import com.taylor.stocks.exception.StockException;
+import lombok.Data;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -12,6 +13,7 @@ import java.util.stream.Collectors;
 /**
  * This would normally be used to get/read/write stock values from a database. Mocking for sake of brevity
  */
+@Data
 @Repository
 public class StocksDAOInMemory implements StocksDAO<Stock> {
 
@@ -22,9 +24,6 @@ public class StocksDAOInMemory implements StocksDAO<Stock> {
         watchedStocks = new HashMap<>(); //init during server startup so it's not null
     }
 
-    public HashMap<String, Stock> getWatchedStocks(){
-        return watchedStocks;
-    }
 
     /**
      * Gets the Watched stock list in Set form

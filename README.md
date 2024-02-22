@@ -1,6 +1,6 @@
 # Stock Assist Application
 ## About The Project
-This is a code project to showcase a simple API for reading stock data from Yahoo! Finance and keeping track of a 'watch list' of desired stocks. The application also tracks the average stock price in real time, based on the number of times a stock has been queried.
+This is a code project to showcase a simple API handwritten by me for reading stock data from Yahoo! Finance and keeping track of a 'watch list' of desired stocks. The application also tracks the average stock price in real time, based on the number of times a stock has been queried.
 
 ## Getting Started
 
